@@ -18,14 +18,13 @@ def send_order_to_100k(request):
         try:
             data = json.loads(request.body)
 
-            # Eng oxirgi is_active=True bo‘lgan sozlama
             config = StreamConfig.objects.filter(is_active=True).last()
             if not config:
                 return JsonResponse({"error": "StreamConfig topilmadi"}, status=400)
 
             payload = {
-                "client_full_name": data.get("name"),
-                "customer_phone": data.get("phone"),
+                "client_full_name": data.get("client_full_name"),
+                "customer_phone": data.get("customer_phone"),
                 "stream_id": config.stream_id,
                 "region_id": config.region_id,
                 "facebook_lead_id": "123456789",
@@ -53,3 +52,4 @@ def send_order_to_100k(request):
             return JsonResponse({"error": str(e)}, status=500)
 
     return JsonResponse({"error": "Only POST method allowed"}, status=405)
+

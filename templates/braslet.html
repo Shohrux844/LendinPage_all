@@ -442,6 +442,7 @@
                     background: #45a049;
                 }
             </style>
+
             <form id="order_form" autocomplete="off">
                 <div class="form-group">
                     <input type="text" id="full_name" name="full_name" class="form-input" required placeholder=" "/>
@@ -455,6 +456,12 @@
 
                 <button type="submit" class="submit-btn">Buyurtma berish</button>
             </form>
+
+            <!-- Muvaffaqiyat xabari -->
+            <div id="success_message"
+                 style="display: none; background: #4CAF50; color: white; padding: 15px; border-radius: 5px; margin-top: 15px; text-align: center; font-weight: bold;">
+                ✅ Buyurtmangiz qabul qilindi!
+            </div>
 
             <script>
                 document.getElementById("order_form").addEventListener("submit", async function (e) {
@@ -479,14 +486,30 @@
                             body: JSON.stringify(data)
                         });
 
+                        const result = await response.json();
+                        console.log("Server javobi:", result);
+
                         if (response.ok) {
-                            // Forma tozalanadi
-                            document.getElementById("order_form").reset();
+                            // Maydonlarni qo'lda tozalash
+                            document.getElementById("full_name").value = "";
+                            document.getElementById("phone").value = "";
+
+                            // Muvaffaqiyat xabarini ko'rsatish
+                            const successMessage = document.getElementById("success_message");
+                            successMessage.style.display = "block";
+
+                            // 3 soniyadan keyin xabarni yashirish
+                            setTimeout(function () {
+                                successMessage.style.display = "none";
+                            }, 3000);
+
                         } else {
-                            console.error("Xatolik:", response.status);
+                            console.error("Xatolik:", response.status, result);
+                            alert("Xatolik yuz berdi: " + (result.error || "Noma'lum xatolik"));
                         }
                     } catch (err) {
                         console.error("Server bilan muammo:", err);
+                        alert("Server bilan bog'lanishda muammo: " + err.message);
                     }
                 });
             </script>
