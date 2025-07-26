@@ -444,6 +444,7 @@
             </style>
 
             <form id="order_form" autocomplete="off">
+                {% csrf_token %}
                 <div class="form-group">
                     <input type="text" id="full_name" name="full_name" class="form-input" required placeholder=" "/>
                     <label class="form-label" for="full_name">Ismingiz va familiyangiz</label>
