@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('PlayfairDisplay-SemiBold.eot');
+    src: url('PlayfairDisplay-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('PlayfairDisplay-SemiBold.woff2') format('woff2'),
+        url('PlayfairDisplay-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
