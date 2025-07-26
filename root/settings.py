@@ -1,8 +1,6 @@
 from os.path import join
 from pathlib import Path
 
-import dj_database_url
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-i#^-@ejz(#)yz*vqcada^@!hrqy5kjcf$b#nz-vhz(&ewce@qi'
@@ -54,7 +52,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'root.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
