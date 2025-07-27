@@ -518,6 +518,7 @@
                         console.log("Server javobi:", result);
 
                         if (response.ok) {
+                            fbq('track', 'Lead');
                             // Maydonlarni qo'lda tozalash
                             document.getElementById("full_name").value = "";
                             document.getElementById("phone").value = "";
