@@ -5,3 +5,6 @@ from .models import StreamConfig
 class StreamConfigAdmin(admin.ModelAdmin):
     list_display = ("stream_id", "region_id", "is_active")
     list_filter = ("is_active",)
+
+
+    

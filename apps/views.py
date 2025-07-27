@@ -16,6 +16,8 @@ ACCESS_TOKEN = 'EAAgTEBZCty3IBPDkBlBuU9r6wdUdhq2RzEoKfztDByldQjBJZAfkwrc6cQs2thT
 class BrasletTemplate(TemplateView):
     template_name = 'braslet.html'
 
+class SoftTempateView(TemplateView):
+    template_name = 'Soft men — erkaklar spreyi!.html'
 
 @csrf_exempt
 def send_order_to_100k(request):
